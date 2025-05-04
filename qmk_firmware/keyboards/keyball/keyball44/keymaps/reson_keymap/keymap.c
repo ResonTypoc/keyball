@@ -75,7 +75,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     switch(get_highest_layer(state)) {
         case 2:
-            keyball_set_cpi(3);
+            keyball_set_cpi(2);
             break;
         default:
             keyball_set_cpi(base_dpi);
