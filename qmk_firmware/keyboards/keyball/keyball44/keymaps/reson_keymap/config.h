@@ -40,5 +40,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 6
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 3
 #define TAPPING_TERM 180
