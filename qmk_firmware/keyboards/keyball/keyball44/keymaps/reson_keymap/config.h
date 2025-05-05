@@ -40,5 +40,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 6
 
-#define TAPPING_TERM 180
+#define TAPPING_TERM 120
 #define KEYBALL_SCROLL_DIV_DEFAULT 6
