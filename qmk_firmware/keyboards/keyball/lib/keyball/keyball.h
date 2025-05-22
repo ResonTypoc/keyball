@@ -148,7 +148,7 @@ typedef uint8_t keyball_cpi_t;
 typedef enum {
     KEYBALL_SCROLLSNAP_MODE_VERTICAL   = 0,
     KEYBALL_SCROLLSNAP_MODE_HORIZONTAL = 1,
-    KEYBALL_SCROLLSNAP_MODE_FREE       = 2,
+    jKEYBALL_SCROLLSNAP_MODE_FREE       = 2,
 } keyball_scrollsnap_mode_t;
 
 typedef struct {

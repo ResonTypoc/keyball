@@ -20,6 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "quantum.h"
 
+enum my_keyball_keycodes {
+    LAY_TOG = KEYBALL_SAFE_RANGE,
+};
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
@@ -77,10 +81,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef LAYER_LED_ENABLE
 #include "layer_led.c"
 #endif
-
-enum my_keyball_keycodes {
-    LAY_TOG = KEYBALL_SAFE_RANGE,
-};
 
 int base_dpi = 3;
 
