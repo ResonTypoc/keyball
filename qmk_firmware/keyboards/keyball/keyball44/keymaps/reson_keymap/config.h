@@ -43,3 +43,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TERM 164
 #define KEYBALL_SCROLL_DIV_DEFAULT 6
+
+#define LAYER_LED_ENABLE
