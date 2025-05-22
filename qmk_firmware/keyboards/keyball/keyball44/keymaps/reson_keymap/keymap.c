@@ -97,7 +97,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         case 3:
             state = remove_auto_mouse_layer(state, false);
             set_auto_mouse_enable(false);
-            keyball_set_scrollsnap_mode(2);
+            keyball_set_scrollsnap_mode(KEYBALL_SCROLLSNAP_MODE_FREE);
             break;
         default:
             set_auto_mouse_enable(true);
