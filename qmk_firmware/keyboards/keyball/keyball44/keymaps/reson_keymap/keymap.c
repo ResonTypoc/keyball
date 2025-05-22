@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-int base_dpi = 7;
+int base_dpi = 3;
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     // Auto enable scroll mode when the highest layer is 3
@@ -76,9 +76,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
     switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
         case 2:
+            state = remove_auto_mouse_layer(state, false);
+            set_auto_mouse_enable(false);
+            break;
         case 3:
             state = remove_auto_mouse_layer(state, false);
             set_auto_mouse_enable(false);
+            keyball_set_scrollsnap_mode(KEYBALL_SCROLLSNAP_MODE_FREE)
             break;
         default:
             set_auto_mouse_enable(true);
@@ -88,7 +92,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     switch(get_highest_layer(state)) {
         case 2:
-            keyball_set_cpi(2);
+            keyball_set_cpi(7);
             break;
         default:
             keyball_set_cpi(base_dpi);
