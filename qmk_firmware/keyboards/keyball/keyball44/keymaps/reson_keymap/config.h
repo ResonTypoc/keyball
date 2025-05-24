@@ -49,4 +49,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // CPIプレシジョンモード
 #define PRECISION_ENABLE // 有効化
-#define PRECISION_CPI 2  // 下げた時のCPI (1/100の値を指定。左記ならCPI 400)
+#define PRECISION_CPI 2  // 下げた時のCPI (1/100の値を指定。)
