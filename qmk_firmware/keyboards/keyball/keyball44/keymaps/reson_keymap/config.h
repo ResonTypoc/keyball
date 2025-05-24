@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAP_CODE_DELAY 5
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-#define AUTO_MOUSE_DEFAULT_LAYER 6
+#define AUTO_MOUSE_DEFAULT_LAYER 2
 #define AUTO_MOUSE_TIME 500
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 7
@@ -44,4 +44,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 164
 #define KEYBALL_SCROLL_DIV_DEFAULT 6
 
+// レイヤーごとにLED色を変更する
 #define LAYER_LED_ENABLE
+
+// CPIプレシジョンモード
+#define PRECISION_ENABLE // 有効化
+#define PRECISION_CPI 2  // 下げた時のCPI (1/100の値を指定。左記ならCPI 400)

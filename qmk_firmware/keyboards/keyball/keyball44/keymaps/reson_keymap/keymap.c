@@ -21,45 +21,47 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "quantum.h"
 
 enum my_keyball_keycodes {
-    LAY_TOG = KEYBALL_SAFE_RANGE,
+    LAY_TOG = KEYBALL_SAFE_RANGE, // レイヤーLEDトグル
+    PRC_TOG,                      // Precision モードトグル
+    PRC_SW,                       // Precision モードスイッチ 
 };
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default
   [0] = LAYOUT_universal(
-    KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                        KC_Y     , KC_U           , KC_I     , KC_O      , KC_P                 , KC_DEL       ,
-    KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J           , KC_K     , KC_L      , LT(2,KC_SCLN)        , LT(3,KC_ENT) ,
-    KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                                        KC_N     , KC_M           , KC_COMM  , KC_DOT    , MT(KC_RSFT,KC_SLSH)  , KC_BSLS      ,
-               KC_LALT  , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(KC_RGUI,KC_GRV)  , LT(5,KC_F21)   , _______  , _______   , LT(1,KC_ESC)
+    KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                        KC_Y     , KC_U           , KC_I     , KC_O           , KC_P                 , KC_BSPC      ,
+    KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J           , KC_K     , MT(PRC_SW,KC_L), LT(2,KC_SCLN)        , LT(3,KC_ENT) ,
+    KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                                        KC_N     , KC_M           , KC_COMM  , KC_DOT         , MT(KC_RSFT,KC_SLSH)  , KC_BSLS      ,
+               KC_LALT  , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(KC_RGUI,KC_GRV)  , LT(5,KC_F21)   , _______  , _______        , LT(1,KC_ESC)
   ),
 
   [1] = LAYOUT_universal(
     KC_ESC   , TG(1)           , KC_7     , KC_8     , KC_9     , S(KC_MINS)       ,                                KC_TRNS   , KC_F7    , KC_F8    , KC_F9    , KC_F12   , KC_TRNS  ,
     KC_TRNS  , KC_ASTERISK     , KC_4     , KC_5     , KC_6     , KC_KP_PLUS       ,                                KC_TRNS   , KC_F4    , KC_F5    , KC_F6    , KC_F11   , KC_TRNS  ,
     KC_TRNS  , KC_KP_SLASH     , KC_1     , KC_2     , KC_3     , KC_KP_MINUS      ,                                KC_TRNS   , KC_F1    , KC_F2    , KC_F3    , KC_F10   , KC_TRNS  ,
-               KC_0            , KC_0                , KC_DOT   , KC_0   , KC_KP_ENTER          , KC_TRNS         , KC_TRNS   , _______  , _______             , KC_TRNS
+                KC_0           , KC_0                , KC_DOT   , KC_0   , KC_KP_ENTER          , KC_TRNS         , KC_TRNS   , _______  , _______             , KC_TRNS
   ),
 
   [2] = LAYOUT_universal(
-    RGB_TOG  ,S(KC_QUOT), KC_7     , KC_8    , KC_9     , S(KC_8)  ,                                         S(KC_9)  , S(KC_1)  , S(KC_6)  , KC_LBRC  , S(KC_4)  , _______  ,
-    LAY_TOG  ,S(KC_SCLN), KC_4     , KC_5    , KC_6     , KC_RBRC  ,                                         KC_NUHS  , KC_MINS  , S(KC_EQL), S(KC_3)  , KC_QUOT  , S(KC_2)  ,
-    _______  ,S(KC_MINS), KC_1     , KC_2    , KC_3     ,S(KC_RBRC),                                        S(KC_NUHS),S(KC_INT1), KC_EQL   ,S(KC_LBRC),S(KC_SLSH),S(KC_INT3),
-                  KC_0     , KC_DOT  , _______  ,         _______  , _______  ,                   KC_DEL   , _______  , _______       , _______  , _______
+    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS    , KC_TRNS    , KC_TRNS , KC_TRNS , KC_TRNS,
+    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN1 , KC_MS_BTN2 , KC_TRNS , KC_TRNS , KC_TRNS,
+    PRC_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN4 , KC_MS_BTN5 , KC_TRNS , KC_TRNS , KC_TRNS,
+              KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS   , KC_TRNS , _______    , _______              , KC_TRNS
   ),
 
   [3] = LAYOUT_universal(
-    RGB_TOG  , AML_TO   , AML_I50  , AML_D50  , _______  , _______  ,                                        RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
-    RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , _______  , SCRL_DVI ,                                        RGB_M_X  , RGB_M_G  , RGB_M_T  , RGB_M_TW , _______  , _______  ,
-    RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , _______  , SCRL_DVD ,                                        CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , _______  , KBC_SAVE ,
-                  QK_BOOT  , KBC_RST  , _______  ,        _______  , _______  ,                   _______  , _______  , _______       , KBC_RST  , QK_BOOT
+    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_HOME  , KC_PAGE_DOWN , KC_PAGE_UP , KC_END  , KC_TRNS , KC_TRNS,
+    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_LEFT  , KC_DOWN      , KC_UP      , KC_RIGHT, KC_TRNS , KC_TRNS,
+    _______  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , QK_KB_13     , QK_KB_14   , QK_KB_15, KC_TRNS , KC_TRNS,
+              KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS   , KC_TRNS , _______ , _______           , KC_TRNS
   ),
 
   [4] = LAYOUT_universal(
-    RGB_TOG  , AML_TO   , AML_I50  , AML_D50  , _______  , _______  ,                                        RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
-    RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , _______  , SCRL_DVI ,                                        RGB_M_X  , RGB_M_G  , RGB_M_T  , RGB_M_TW , _______  , _______  ,
-    RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , _______  , SCRL_DVD ,                                        CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , _______  , KBC_SAVE ,
-                  QK_BOOT  , KBC_RST  , _______  ,        _______  , _______  ,                   _______  , _______  , _______       , KBC_RST  , QK_BOOT
+    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS,
+    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS,
+    _______  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS,
+              KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS   , KC_TRNS , _______ , _______           , KC_TRNS
   ),
 
   [5] = LAYOUT_universal(
@@ -83,10 +85,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
     switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
-        case 2:
-            state = remove_auto_mouse_layer(state, false);
-            set_auto_mouse_enable(false);
-            break;
+        // case 2:
+        //     state = remove_auto_mouse_layer(state, false);
+        //     set_auto_mouse_enable(false);
+        //     break;
         case 3:
             state = remove_auto_mouse_layer(state, false);
             set_auto_mouse_enable(false);
@@ -98,14 +100,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
     #endif
 
-    switch(get_highest_layer(state)) {
-        case 2:
-            keyball_set_cpi(7);
-            break;
-        default:
-            keyball_set_cpi(base_dpi);
-            break;
-    }
+    // switch(get_highest_layer(state)) {
+    //     case 2:
+    //         keyball_set_cpi(7);
+    //         break;
+    //     default:
+    //         keyball_set_cpi(base_dpi);
+    //         break;
+    // }
 
     change_layer_led_color(state);
     return state;
@@ -116,6 +118,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         #ifdef LAYER_LED_ENABLE
         case LAY_TOG: toggle_layer_led(record->event.pressed); return true;
+        #endif
+        #ifdef PRECISION_ENABLE
+        case PRC_SW:  precision_switch(record->event.pressed); return false;
+        case PRC_TOG: precision_toggle(record->event.pressed); return false;
         #endif
         default: break;
     }
