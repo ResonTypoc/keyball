@@ -115,9 +115,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case RGB_TOG:  
-            // 標準のRGB処理を通す  
-            return true;  
         #ifdef LAYER_LED_ENABLE
         case LAY_TOG: toggle_layer_led(record->event.pressed); return true;
         #endif
