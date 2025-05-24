@@ -77,6 +77,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #include "layer_led.c"
 #endif
 
+#ifdef PRECISION_ENABLE
+#include "precision.c"
+#endif
+
 int base_dpi = 2;
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -120,6 +124,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case LAY_TOG: toggle_layer_led(record->event.pressed); return true;
         #endif
         #ifdef PRECISION_ENABLE
+        
         case PRC_SW:  precision_switch(record->event.pressed); return false;
         case PRC_TOG: precision_toggle(record->event.pressed); return false;
         #endif
