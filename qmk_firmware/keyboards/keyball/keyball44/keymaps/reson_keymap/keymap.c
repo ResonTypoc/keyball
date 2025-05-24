@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default
   [0] = LAYOUT_universal(
     KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                        KC_Y     , KC_U           , KC_I     , KC_O           , KC_P                 , KC_BSPC      ,
-    KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J           , KC_K     , MT(MOD_LSFT,KC_L), LT(2,KC_SCLN)      , LT(3,KC_ENT) ,
+    KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J           , KC_K     , MT(PRC_SW,KC_L), LT(2,KC_SCLN)      , LT(3,KC_ENT) ,
     KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                                        KC_N     , KC_M           , KC_COMM  , KC_DOT         , MT(MOD_LSFT,KC_SLSH) , KC_BSLS      ,
                KC_LALT  , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(MOD_LGUI,KC_GRV)  , LT(5,KC_F21)   , _______  , _______       , LT(1,KC_ESC)
   ),
