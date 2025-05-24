@@ -56,5 +56,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Jiggler機能
 #define JIGGLER_ENABLE // 有効化
-#define JIGGLER_INTERVAL 10000  // 3分間隔  
-#define JIGGLER_KEYCODE KC_A   // 送信するキー
+#define JIGGLER_INTERVAL 180000  // 3分間隔  
+#define JIGGLER_KEYCODE KC_F23   // 送信するキー
