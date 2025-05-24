@@ -34,14 +34,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                        KC_Y     , KC_U           , KC_I     , KC_O           , KC_P                 , KC_BSPC      ,
     KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J           , KC_K     , PRC_L          , LT(2,KC_SCLN)      , LT(3,KC_ENT) ,
     KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                                        KC_N     , KC_M           , KC_COMM  , KC_DOT         , MT(MOD_LSFT,KC_SLSH) , KC_BSLS      ,
-               KC_LALT  , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(MOD_LGUI,KC_GRV)  , LT(5,KC_F21)   , _______  , _______       , LT(1,KC_ESC)
+               PRC_SW   , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(MOD_LGUI,KC_GRV)  , LT(5,KC_F21)   , _______  , _______       , LT(1,KC_ESC)
   ),
 
   [1] = LAYOUT_universal(
-    KC_ESC   , TG(1)           , KC_7     , KC_8     , KC_9     , S(KC_MINS)       ,                                KC_TRNS   , KC_F7    , KC_F8    , KC_F9    , KC_F12   , KC_TRNS  ,
-    KC_TRNS  , KC_ASTERISK     , KC_4     , KC_5     , KC_6     , KC_KP_PLUS       ,                                KC_TRNS   , KC_F4    , KC_F5    , KC_F6    , KC_F11   , KC_TRNS  ,
-    KC_TRNS  , KC_KP_SLASH     , KC_1     , KC_2     , KC_3     , KC_KP_MINUS      ,                                KC_TRNS   , KC_F1    , KC_F2    , KC_F3    , KC_F10   , KC_TRNS  ,
-                KC_0           , KC_0                , KC_DOT   , KC_0   , KC_KP_ENTER          , KC_TRNS         , KC_TRNS   , _______  , _______             , KC_TRNS
+    KC_ESC   , TG(1)           , KC_7     , KC_8     , KC_9     , S(KC_MINS)       ,                         KC_TRNS  , KC_F7      , KC_F8      , KC_F9   , KC_F12   , KC_TRNS  ,
+    KC_TRNS  , KC_ASTERISK     , KC_4     , KC_5     , KC_6     , KC_KP_PLUS       ,                         KC_TRNS  , KC_F4      , KC_F5      , KC_F6   , KC_F11   , KC_TRNS  ,
+    KC_TRNS  , KC_KP_SLASH     , KC_1     , KC_2     , KC_3     , KC_KP_MINUS      ,                         KC_TRNS  , KC_F1      , KC_F2      , KC_F3   , KC_F10   , KC_TRNS  ,
+                KC_0           , KC_0                , KC_DOT   , KC_0   , KC_KP_ENTER          , KC_TRNS  , KC_TRNS  , _______    , _______              , KC_TRNS
   ),
 
   [2] = LAYOUT_universal(
@@ -136,7 +136,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 precision_switch(record->event.pressed);  
             }  
             return false;
-        // case PRC_SW:  precision_switch(record->event.pressed); return false;
+        case PRC_SW:  precision_switch(record->event.pressed); return false;
         case PRC_TOG: precision_toggle(record->event.pressed); return false;
         #endif
         default: break;
