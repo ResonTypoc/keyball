@@ -32,9 +32,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default
   [0] = LAYOUT_universal(
     KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                        KC_Y     , KC_U           , KC_I     , KC_O           , KC_P                 , KC_BSPC      ,
-    KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J           , KC_K     , PRC_L          , LT(2,KC_SCLN)      , LT(3,KC_ENT) ,
+    KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J           , KC_K     , KC_L           , LT(2,KC_SCLN)        , LT(3,KC_ENT) ,
     KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                                        KC_N     , KC_M           , KC_COMM  , KC_DOT         , MT(MOD_LSFT,KC_SLSH) , KC_BSLS      ,
-               PRC_SW   , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(MOD_LGUI,KC_GRV)  , LT(5,KC_F21)   , _______  , _______       , LT(1,KC_ESC)
+               KC_LALT  , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(MOD_LGUI,KC_GRV)  , LT(5,KC_F21)   , _______  , _______       , LT(1,KC_ESC)
   ),
 
   [1] = LAYOUT_universal(
@@ -46,30 +46,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT_universal(
     RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS    , KC_TRNS    , KC_TRNS , KC_TRNS , KC_TRNS,
-    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN1 , KC_MS_BTN2 , KC_TRNS , KC_TRNS , KC_TRNS,
+    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN1 , KC_MS_BTN2 , PRC_SW  , KC_TRNS , KC_TRNS,
     PRC_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN4 , KC_MS_BTN5 , KC_TRNS , KC_TRNS , KC_TRNS,
               KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS   , KC_TRNS , _______    , _______              , KC_TRNS
   ),
 
   [3] = LAYOUT_universal(
-    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_HOME  , KC_PAGE_DOWN , KC_PAGE_UP , KC_END  , KC_TRNS , KC_TRNS,
-    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_LEFT  , KC_DOWN      , KC_UP      , KC_RIGHT, KC_TRNS , KC_TRNS,
-    _______  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , QK_KB_13     , QK_KB_14   , QK_KB_15, KC_TRNS , KC_TRNS,
-              KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS   , KC_TRNS , _______ , _______           , KC_TRNS
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_HOME  , KC_PAGE_DOWN , KC_PAGE_UP , KC_END  , KC_TRNS , KC_TRNS,
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_LEFT  , KC_DOWN      , KC_UP      , KC_RIGHT, KC_TRNS , KC_TRNS,
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , QK_KB_13     , QK_KB_14   , QK_KB_15, KC_TRNS , KC_TRNS,
+              KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS  , KC_TRNS  , _______ , _______         , KC_TRNS
   ),
 
   [4] = LAYOUT_universal(
-    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS,
-    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS,
-    _______  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS,
-              KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS   , KC_TRNS , _______ , _______           , KC_TRNS
+    KC_TRNS  ,S(KC_1)          , S(KC_2)  , S(KC_3)  , S(KC_4)  , S(KC_5)     ,                              S(KC_6)     , S(KC_7) , S(KC_8)         , S(KC_9)           , S(KC_0) , KC_TRNS ,
+    KC_TRNS  ,KC_1             , KC_2     , KC_3     , KC_4     , KC_5        ,                              KC_6        , KC_7    , KC_8            , KC_9              , KC_0    , KC_QUOTE,
+    KC_TRNS  ,KC_TRNS          , S(KC_9)  , S(KC_0)  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS     , KC_MINS , KC_LEFT_BRACKET , KC_RIGHT_BRACKET  , KC_EQUAL, KC_EQUAL ,
+              KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS  , S(KC_EQUAL) , _______ , _______                             , KC_TRNS
   ),
 
   [5] = LAYOUT_universal(
-    RGB_TOG  , AML_TO   , AML_I50  , AML_D50  , _______  , _______  ,                                        RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
-    RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , _______  , SCRL_DVI ,                                        RGB_M_X  , RGB_M_G  , RGB_M_T  , RGB_M_TW , _______  , _______  ,
-    RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , _______  , SCRL_DVD ,                                        CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , _______  , KBC_SAVE ,
-                  QK_BOOT  , KBC_RST  , _______  ,        _______  , _______  ,                   _______  , _______  , _______       , KBC_RST  , QK_BOOT
+    KC_TRNS ,KC_TRNS         ,KC_TRNS     ,LGUI(KC_UP)        ,KC_TRNS             ,KC_TRNS,                     KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
+    KC_TRNS ,LCTL(LGUI(KC_D)),LGUI(KC_TAB),LCTL(LGUI(KC_LEFT)),LCTL(LGUI(KC_RIGHT)),KC_TRNS,                     KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
+    KC_TRNS ,KC_TRNS         ,KC_TRNS     ,LGUI(KC_LEFT)      ,LGUI(KC_RIGHT)      ,KC_TRNS,                     KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
+             KC_TRNS         ,KC_TRNS     ,KC_TRNS            ,KC_TRNS             ,KC_TRNS,          KC_TRNS  , KC_TRNS  , _______ , _______          , KC_TRNS
   ),
 };
 // clang-format on
@@ -82,18 +82,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #include "precision.c"
 #endif
 
-int base_dpi = 2;
-
 layer_state_t layer_state_set_user(layer_state_t state) {
     // Auto enable scroll mode when the highest layer is 3
     keyball_set_scroll_mode(get_highest_layer(state) == 3); 
 
     #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
     switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
-        // case 2:
-        //     state = remove_auto_mouse_layer(state, false);
-        //     set_auto_mouse_enable(false);
-        //     break;
         case 3:
             state = remove_auto_mouse_layer(state, false);
             set_auto_mouse_enable(false);
@@ -105,37 +99,16 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
     #endif
 
-    // switch(get_highest_layer(state)) {
-    //     case 2:
-    //         keyball_set_cpi(7);
-    //         break;
-    //     default:
-    //         keyball_set_cpi(base_dpi);
-    //         break;
-    // }
-
     change_layer_led_color(state);
     return state;
 }
 
-// 切り替え処理
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         #ifdef LAYER_LED_ENABLE
         case LAY_TOG: toggle_layer_led(record->event.pressed); return true;
         #endif
         #ifdef PRECISION_ENABLE
-        case PRC_L:  
-            if (record->tap.count > 0) {  
-                // タップ時：Lキーを送信  
-                if (record->event.pressed) {  
-                    tap_code(KC_L);  
-                }  
-            } else {  
-                // ホールド時：precision切り替え  
-                precision_switch(record->event.pressed);  
-            }  
-            return false;
         case PRC_SW:  precision_switch(record->event.pressed); return false;
         case PRC_TOG: precision_toggle(record->event.pressed); return false;
         #endif

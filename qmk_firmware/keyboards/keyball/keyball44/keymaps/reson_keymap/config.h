@@ -35,14 +35,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAP_CODE_DELAY 5
 
+// オートマウスレイヤ関係
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-#define AUTO_MOUSE_DEFAULT_LAYER 2
-#define AUTO_MOUSE_TIME 500
+#define AUTO_MOUSE_DEFAULT_LAYER 2 // オートマウスのデフォルトレイヤ
+#define AUTO_MOUSE_TIME 500 // オートマウスの有効時間 (ms)
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 7
+#define DYNAMIC_KEYMAP_LAYER_COUNT 7 // レイヤ数
 
-#define TAPPING_TERM 164
-#define KEYBALL_SCROLL_DIV_DEFAULT 6
+#define TAPPING_TERM 164 // キー長押し判定時間
+
+#define KEYBALL_CPI_DEFAULT 700 // デフォルトCPI
+#define KEYBALL_SCROLL_DIV_DEFAULT 6 // デフォルトスクロール速度
 
 // レイヤーごとにLED色を変更する
 #define LAYER_LED_ENABLE
