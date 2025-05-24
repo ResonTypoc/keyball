@@ -15,8 +15,9 @@ void change_layer_led_color(uint8_t layer_no) {
     }
 
     if (layer_no == 0) {
-        my_latest_val = rgblight_get_val();
-        rgblight_sethsv(rgblight_get_hue(), rgblight_get_sat(), 0); 
+        // my_latest_val = rgblight_get_val();
+        // rgblight_sethsv(rgblight_get_hue(), rgblight_get_sat(), 0);
+        rgblight_sethsv(30, rgblight_get_sat(), my_latest_val);
     } else {
         rgblight_sethsv(my_layer_colors[layer_no-1], rgblight_get_sat(), my_latest_val);
     }
