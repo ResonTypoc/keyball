@@ -53,3 +53,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // CPIプレシジョンモード
 #define PRECISION_ENABLE // 有効化
 #define PRECISION_CPI 2  // 下げた時のCPI (1/100の値を指定。)
+
+// Jiggler機能
+#define JIGGLER_ENABLE // 有効化
+#define JIGGLER_INTERVAL 10000  // 3分間隔  
+#define JIGGLER_KEYCODE KC_A   // 送信するキー

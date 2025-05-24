@@ -24,7 +24,7 @@ enum my_keyball_keycodes {
     LAY_TOG = KEYBALL_SAFE_RANGE, // レイヤーLEDトグル
     PRC_TOG,                      // Precision モードトグル
     PRC_SW,                       // Precision モードスイッチ
-    PRC_L, 
+    JIGGLER_TOG,                  // ジグラーのトグル
 };
 
 // clang-format off
@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                        KC_Y     , KC_U           , KC_I     , KC_O           , KC_P                 , KC_BSPC      ,
     KC_LCTL  , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J           , KC_K     , KC_L           , LT(2,KC_SCLN)        , LT(3,KC_ENT) ,
     KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                                        KC_N     , KC_M           , KC_COMM  , KC_DOT         , MT(MOD_LSFT,KC_SLSH) , KC_BSLS      ,
-               KC_LALT  , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(MOD_LGUI,KC_GRV)  , LT(5,KC_F21)   , _______  , _______       , LT(1,KC_ESC)
+               KC_LALT  , KC_LGUI             , LT(4,KC_F20) , LT(3,KC_SPC) , LT(5,KC_MINS)     , MT(MOD_LGUI,KC_GRV)  , LT(4,KC_F21)   , _______  , _______       , LT(1,KC_ESC)
   ),
 
   [1] = LAYOUT_universal(
@@ -59,17 +59,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [4] = LAYOUT_universal(
-    KC_TRNS  ,S(KC_1)          , S(KC_2)  , S(KC_3)  , S(KC_4)  , S(KC_5)     ,                              S(KC_6)     , S(KC_7) , S(KC_8)         , S(KC_9)           , S(KC_0) , KC_TRNS ,
+    JIGGLER_TOG  ,S(KC_1)          , S(KC_2)  , S(KC_3)  , S(KC_4)  , S(KC_5)     ,                              S(KC_6)     , S(KC_7) , S(KC_8)         , S(KC_9)           , S(KC_0) , KC_TRNS ,
     KC_TRNS  ,KC_1             , KC_2     , KC_3     , KC_4     , KC_5        ,                              KC_6        , KC_7    , KC_8            , KC_9              , KC_0    , KC_QUOTE,
     KC_TRNS  ,KC_TRNS          , S(KC_9)  , S(KC_0)  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS     , KC_MINS , KC_LEFT_BRACKET , KC_RIGHT_BRACKET  , KC_EQUAL, KC_EQUAL ,
               KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS  , S(KC_EQUAL) , _______ , _______                             , KC_TRNS
   ),
 
   [5] = LAYOUT_universal(
-    KC_TRNS ,KC_TRNS         ,KC_TRNS     ,LGUI(KC_UP)        ,KC_TRNS             ,KC_TRNS,                     KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
-    KC_TRNS ,LCTL(LGUI(KC_D)),LGUI(KC_TAB),LCTL(LGUI(KC_LEFT)),LCTL(LGUI(KC_RIGHT)),KC_TRNS,                     KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
-    KC_TRNS ,KC_TRNS         ,KC_TRNS     ,LGUI(KC_LEFT)      ,LGUI(KC_RIGHT)      ,KC_TRNS,                     KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
-             KC_TRNS         ,KC_TRNS     ,KC_TRNS            ,KC_TRNS             ,KC_TRNS,          KC_TRNS  , KC_TRNS  , _______ , _______          , KC_TRNS
+    KC_TRNS ,KC_TRNS         ,KC_TRNS     ,LGUI(KC_UP)        ,KC_TRNS             ,KC_TRNS,                KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
+    KC_TRNS ,LCTL(LGUI(KC_D)),LGUI(KC_TAB),LCTL(LGUI(KC_LEFT)),LCTL(LGUI(KC_RIGHT)),KC_TRNS,                KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
+    KC_TRNS ,KC_TRNS         ,KC_TRNS     ,LGUI(KC_LEFT)      ,LGUI(KC_RIGHT)      ,KC_TRNS,                KC_TRNS  , KC_TRNS , KC_TRNS , KC_TRNS, KC_TRNS , KC_TRNS,
+             KC_TRNS         ,KC_TRNS     ,KC_TRNS            ,KC_TRNS             ,KC_TRNS,     KC_TRNS  , KC_TRNS  , _______ , _______          , KC_TRNS
   ),
 };
 // clang-format on
@@ -81,6 +81,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef PRECISION_ENABLE
 #include "precision.c"
 #endif
+
+#ifdef JIGGLER_ENABLE  
+#include "jiggler.c"  
+#endif  
+
+void matrix_scan_user(void) {  
+    #ifdef JIGGLER_ENABLE  
+    jiggler_task();  
+    #endif  
+}
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     // Auto enable scroll mode when the highest layer is 3
@@ -112,6 +122,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case PRC_SW:  precision_switch(record->event.pressed); return false;
         case PRC_TOG: precision_toggle(record->event.pressed); return false;
         #endif
+        #ifdef JIGGLER_ENABLE  
+        case JIGGLER_TOG: jiggler_toggle(record->event.pressed); return false;  
+        #endif  
         default: break;
     }
     return true;
