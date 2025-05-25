@@ -23,7 +23,7 @@ void change_layer_led_color(uint8_t layer_no) {
 
     if (layer_no == 0) {
         rgblight_sethsv(rgblight_get_hue(), rgblight_get_sat(), 0);
-    } else if (layer_no <= 6)) {
+    } else if (layer_no <= 6) {
         rgblight_sethsv(my_layer_colors[layer_no-1], rgblight_get_sat(), my_latest_val);
     }
 }
