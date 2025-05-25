@@ -2,6 +2,10 @@
 
 #include QMK_KEYBOARD_H
 
+#ifdef JIGGLER_ENABLE
+bool jiggler_is_enabled(void);  
+#endif
+
 static const uint8_t my_layer_colors[] = {43, 85, 128, 171, 213, 0}; // 黄, 緑, シアン, 青, マゼンタ, 赤
 
 static uint8_t my_latest_val    = 0;

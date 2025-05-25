@@ -13,6 +13,10 @@ static uint32_t jiggler_timer = 0;
 #define JIGGLER_KEYCODE KC_F23   // デフォルトF23キー  
 #endif
 
+#ifdef LAYER_LED_ENABLE  
+void change_layer_led_color(uint8_t layer_no);  
+#endif
+
 void jiggler_toggle(bool pressed) {  
     if (!pressed) {  
         return;  
