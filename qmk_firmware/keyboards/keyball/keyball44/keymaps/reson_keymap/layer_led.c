@@ -2,7 +2,7 @@
 
 #include QMK_KEYBOARD_H
 
-static const uint8_t my_layer_colors[] = {234, 17, 170, 85, 234, 17}; // ピンク、黄、青、緑
+static const uint8_t my_layer_colors[] = {0, 43, 85, 128, 171, 213}; // 赤, 黄, 緑, シアン, 青, マゼンタ
 
 static uint8_t my_latest_val    = 0;
 static uint8_t my_latest_hue    = 0;
