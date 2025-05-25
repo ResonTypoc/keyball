@@ -109,7 +109,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
     #endif
 
-    change_layer_led_color(state);
+    change_layer_led_color(get_highest_layer(state));
     return state;
 }
 
