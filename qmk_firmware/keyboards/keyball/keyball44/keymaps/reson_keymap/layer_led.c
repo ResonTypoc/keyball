@@ -2,7 +2,7 @@
 
 #include QMK_KEYBOARD_H
 
-static const uint8_t my_layer_colors[] = {0, 43, 85, 128, 171, 213}; // 赤, 黄, 緑, シアン, 青, マゼンタ
+static const uint8_t my_layer_colors[] = {43, 85, 128, 171, 213, 0}; // 黄, 緑, シアン, 青, マゼンタ, 赤
 
 static uint8_t my_latest_val    = 0;
 static uint8_t my_latest_hue    = 0;
@@ -14,6 +14,14 @@ void change_layer_led_color(uint8_t layer_no) {
     if (!layer_led) {
         return;
     }
+
+#ifdef JIGGLER_ENABLE  
+    // ジグラーが有効な場合は専用色を表示  
+    if (jiggler_is_enabled()) {  
+        rgblight_sethsv(0, 255, my_latest_val);  // 赤 
+        return;  
+    }  
+#endif
 
     // 初回のみ明度を保存  
     if (!brightness_saved) {  

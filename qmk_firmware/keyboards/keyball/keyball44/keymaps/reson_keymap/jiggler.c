@@ -18,12 +18,16 @@ void jiggler_toggle(bool pressed) {
         return;  
     }  
       
-    jiggler_enabled = !jiggler_enabled;  
-    if (jiggler_enabled) {  
-        jiggler_timer = timer_read32();  
-    }  
+    jiggler_enabled = !jiggler_enabled;
+    if (jiggler_enabled) {
+        jiggler_timer = timer_read32();
+    }
+
+#ifdef LAYER_LED_ENABLE
+    change_layer_led_color(get_highest_layer(layer_state));
+#endif
 }  
-  
+
 void jiggler_task(void) {  
     if (jiggler_enabled) {  
         if (timer_elapsed32(jiggler_timer) > JIGGLER_INTERVAL) {  
