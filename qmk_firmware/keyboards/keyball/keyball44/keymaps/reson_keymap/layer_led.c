@@ -21,17 +21,17 @@ void change_layer_led_color(uint8_t layer_no) {
 
 #ifdef JIGGLER_ENABLE  
     // ジグラーが有効な場合は専用色を表示  
-    if (jiggler_is_enabled()) {  
+    if (jiggler_is_enabled()) {
         rgblight_sethsv(0, 255, my_latest_val);  // 赤 
         return;  
-    }  
+    }
 #endif
 
-    // 初回のみ明度を保存  
-    if (!brightness_saved) {  
-        my_latest_val = rgblight_get_val();  
-        brightness_saved = true;  
-    }
+    // // 初回のみ明度を保存  
+    // if (!brightness_saved) {  
+    //     my_latest_val = rgblight_get_val();  
+    //     brightness_saved = true;  
+    // }
 
     if (layer_no == 0) {
         rgblight_sethsv(rgblight_get_hue(), rgblight_get_sat(), 0);
