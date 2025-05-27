@@ -45,24 +45,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT_universal(
-    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS    , KC_TRNS    , KC_TRNS , KC_TRNS , KC_TRNS,
-    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN1 , KC_MS_BTN2 , PRC_SW  , KC_TRNS , KC_TRNS,
-    PRC_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN4 , KC_MS_BTN5 , KC_TRNS , KC_TRNS , KC_TRNS,
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_F5      , KC_TRNS    , KC_TRNS , KC_TRNS , KC_TRNS,
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN1 , KC_MS_BTN2 , PRC_SW  , KC_TRNS , KC_TRNS,
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN4 , KC_MS_BTN5 , KC_TRNS , KC_TRNS , KC_TRNS,
               KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS   , KC_TRNS , _______    , _______              , KC_TRNS
   ),
 
   [3] = LAYOUT_universal(
-    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_HOME  , KC_PAGE_DOWN , KC_PAGE_UP , KC_END  , KC_TRNS , KC_TRNS,
-    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_LEFT  , KC_DOWN      , KC_UP      , KC_RIGHT, KC_TRNS , KC_TRNS,
-    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , QK_KB_13     , QK_KB_14   , QK_KB_15, KC_TRNS , KC_TRNS,
+    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_HOME  , KC_PAGE_DOWN , KC_PAGE_UP , KC_END  , KC_TRNS , KC_TRNS,
+    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_LEFT  , KC_DOWN      , KC_UP      , KC_RIGHT, KC_TRNS , KC_TRNS,
+    PRC_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , QK_KB_13     , QK_KB_14   , QK_KB_15, KC_TRNS , KC_TRNS,
               KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS  , KC_TRNS  , _______ , _______         , KC_TRNS
   ),
 
   [4] = LAYOUT_universal(
     JIGGLER_TOG  ,S(KC_1)          , S(KC_2)  , S(KC_3)  , S(KC_4)  , S(KC_5)     ,                              S(KC_6)     , S(KC_7) , S(KC_8)         , S(KC_9)           , S(KC_0) , KC_TRNS ,
-    KC_TRNS  ,KC_1             , KC_2     , KC_3     , KC_4     , KC_5        ,                              KC_6        , KC_7    , KC_8            , KC_9              , KC_0    , KC_QUOTE,
-    KC_TRNS  ,KC_TRNS          , S(KC_9)  , S(KC_0)  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS     , KC_MINS , KC_LEFT_BRACKET , KC_RIGHT_BRACKET  , KC_EQUAL, KC_EQUAL ,
-              KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS  , S(KC_EQUAL) , _______ , _______                             , KC_TRNS
+    KC_TRNS      ,KC_1             , KC_2     , KC_3     , KC_4     , KC_5        ,                              KC_6        , KC_7    , KC_8            , KC_9              , KC_0    , KC_QUOTE,
+    KC_TRNS      ,KC_TRNS          , S(KC_9)  , S(KC_0)  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS     , KC_MINS , KC_LEFT_BRACKET , KC_RIGHT_BRACKET  , KC_EQUAL, KC_EQUAL ,
+                  KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS  , S(KC_EQUAL) , _______ , _______                             , KC_TRNS
   ),
 
   [5] = LAYOUT_universal(
@@ -85,6 +85,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef JIGGLER_ENABLE  
 #include "jiggler.c"  
 #endif  
+
+void keyboard_post_init_user(void) {  
+#ifdef LAYER_LED_ENABLE  
+    reset_layer_led_state();  
+#endif  
+}
 
 void matrix_scan_user(void) {  
     #ifdef JIGGLER_ENABLE  
@@ -123,7 +129,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case PRC_TOG: precision_toggle(record->event.pressed); return false;
         #endif
         #ifdef JIGGLER_ENABLE  
-        case JIGGLER_TOG: jiggler_toggle(record->event.pressed); return false;  
+        case JIGGLER_TOG: jiggler_toggle(record->event.pressed); return false;
         #endif  
         default: break;
     }

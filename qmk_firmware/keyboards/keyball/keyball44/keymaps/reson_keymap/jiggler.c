@@ -28,21 +28,28 @@ void jiggler_toggle(bool pressed) {
     }
 
 #ifdef LAYER_LED_ENABLE
-    change_layer_led_color(get_highest_layer(layer_state));
+    led_update_pending = true;
 #endif
-}  
+}
 
-void jiggler_task(void) {  
-    if (jiggler_enabled) {  
-        if (timer_elapsed32(jiggler_timer) > JIGGLER_INTERVAL) {  
-            tap_code(JIGGLER_KEYCODE);  
-            jiggler_timer = timer_read32();  
-        }  
-    }  
-}  
-  
+void jiggler_task(void) {
+    if (jiggler_enabled) {
+        if (timer_elapsed32(jiggler_timer) > JIGGLER_INTERVAL) {
+            tap_code(JIGGLER_KEYCODE);
+            jiggler_timer = timer_read32();
+        }
+    }
+
+#ifdef LAYER_LED_ENABLE
+    if (led_update_pending) {
+        change_layer_led_color(get_highest_layer(layer_state));
+        led_update_pending = false;
+    }
+#endif
+}
+
 bool jiggler_is_enabled(void) {  
     return jiggler_enabled;  
-}  
-  
+}
+
 #endif
