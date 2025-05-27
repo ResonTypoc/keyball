@@ -4,6 +4,7 @@
 
 static bool jiggler_enabled = false;
 static uint32_t jiggler_timer = 0;
+static bool led_update_pending = false;
 
 #ifndef JIGGLER_INTERVAL  
 #define JIGGLER_INTERVAL 180000  // デフォルト3分 = 180,000ms  
