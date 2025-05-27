@@ -13,24 +13,10 @@ static uint8_t my_latest_hue    = 0;
 static bool    layer_led        = false;
 static bool    brightness_saved = false;
 
-
-void reset_layer_led_state(void) {
-    brightness_saved = false;
-    my_latest_val = 0;
-    my_latest_hue = 0;
-    layer_led = false;  // 状態も初期化
-}
-
 // レイヤーごとにLED色変更
 void change_layer_led_color(uint8_t layer_no) {
     if (!layer_led) {
         return;
-    }
-
-    // 初回のみ明度を保存  
-    if (!brightness_saved) {  
-        my_latest_val = rgblight_get_val();  
-        brightness_saved = true;  
     }
 
 #ifdef JIGGLER_ENABLE  
@@ -41,11 +27,10 @@ void change_layer_led_color(uint8_t layer_no) {
     }  
 #endif
 
-    // RGB状態の健全性チェック  
-    if (rgblight_get_val() == 0 && my_latest_val > 0) {  
-        // 異常状態を検出した場合の復旧処理  
-        reset_layer_led_state();  
-        return;  
+    // 初回のみ明度を保存  
+    if (!brightness_saved) {  
+        my_latest_val = rgblight_get_val();  
+        brightness_saved = true;  
     }
 
     if (layer_no == 0) {
