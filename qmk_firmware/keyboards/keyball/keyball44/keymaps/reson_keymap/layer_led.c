@@ -8,8 +8,8 @@ bool jiggler_is_enabled(void);
 
 static const uint8_t my_layer_colors[] = {43, 85, 128, 171, 213, 0}; // 黄, 緑, シアン, 青, マゼンタ, 赤
 
-static uint8_t my_latest_val    = 0;
-static uint8_t my_latest_hue    = 0;
+static uint8_t my_latest_val    = 100;
+static uint8_t my_latest_hue    = 100;
 static bool    layer_led        = false;
 // static bool    brightness_saved = false;
 
