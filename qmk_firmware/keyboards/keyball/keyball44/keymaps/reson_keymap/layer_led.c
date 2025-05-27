@@ -11,7 +11,7 @@ static const uint8_t my_layer_colors[] = {43, 85, 128, 171, 213, 0}; // 黄, 緑
 static uint8_t my_latest_val    = 0;
 static uint8_t my_latest_hue    = 0;
 static bool    layer_led        = false;
-static bool    brightness_saved = false;
+// static bool    brightness_saved = false;
 
 // レイヤーごとにLED色変更
 void change_layer_led_color(uint8_t layer_no) {
