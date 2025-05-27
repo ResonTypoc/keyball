@@ -45,16 +45,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT_universal(
-    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_TRNS    , KC_TRNS    , KC_TRNS , KC_TRNS , KC_TRNS,
-    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN1 , KC_MS_BTN2 , PRC_SW  , KC_TRNS , KC_TRNS,
-    PRC_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN4 , KC_MS_BTN5 , KC_TRNS , KC_TRNS , KC_TRNS,
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_F5      , KC_TRNS    , KC_TRNS , KC_TRNS , KC_TRNS,
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN1 , KC_MS_BTN2 , PRC_SW  , KC_TRNS , KC_TRNS,
+    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , KC_MS_BTN4 , KC_MS_BTN5 , KC_TRNS , KC_TRNS , KC_TRNS,
               KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS   , KC_TRNS , _______    , _______              , KC_TRNS
   ),
 
   [3] = LAYOUT_universal(
-    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_HOME  , KC_PAGE_DOWN , KC_PAGE_UP , KC_END  , KC_TRNS , KC_TRNS,
-    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_LEFT  , KC_DOWN      , KC_UP      , KC_RIGHT, KC_TRNS , KC_TRNS,
-    KC_TRNS  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , QK_KB_13     , QK_KB_14   , QK_KB_15, KC_TRNS , KC_TRNS,
+    RGB_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_HOME  , KC_PAGE_DOWN , KC_PAGE_UP , KC_END  , KC_TRNS , KC_TRNS,
+    LAY_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_LEFT  , KC_DOWN      , KC_UP      , KC_RIGHT, KC_TRNS , KC_TRNS,
+    PRC_TOG  ,KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                              KC_TRNS  , QK_KB_13     , QK_KB_14   , QK_KB_15, KC_TRNS , KC_TRNS,
               KC_TRNS          , KC_TRNS  , KC_TRNS  , KC_TRNS  , KC_TRNS     ,                   KC_TRNS  , KC_TRNS  , _______ , _______         , KC_TRNS
   ),
 
